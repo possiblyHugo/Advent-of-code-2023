@@ -6,6 +6,7 @@
 int main() {	
 	std::vector<std::string> calibration_document;
 	int lineCount = 0;
+	int calibration_total = 0;
 
 	std::cout << "Calibration Document line count:  " << std::endl;
 	std::cin >> lineCount;
@@ -39,12 +40,18 @@ int main() {
 
 			}
 		}
-		std::cout << "First value: " << first_value << "\n Last Value: " << last_value;
+		
+		if (last_value == 0) { // Condition check that if only one number is found in the line. (Instructions prompt that the single number should be doubled)
+			last_value = first_value;
+		}
 
-		std::cout << std::endl;
+		calibration_total += ((first_value * 10) + last_value); // First_value is multiplied by then to shift the number once to the left. 1 and 2 becomes 12 that way
+		
 		first_value = 0;
 		last_value = 0;
 	}
+
+	std::cout << "The total for this calibration document is: " << calibration_total << std::endl;
 
 	return 0;
 }
