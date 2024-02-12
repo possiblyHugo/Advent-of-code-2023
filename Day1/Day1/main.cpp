@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctype.h> // isdigit
 
 int main() {	
 	std::vector<std::string> calibration_document;
@@ -21,11 +22,24 @@ int main() {
 	}
 
 	for (int i = 0; i < lineCount; i++) {
+		int first_value = 0;
+		int last_value = 0;
 
 		for (int j = 0; j < calibration_document[i].length(); j++) {
-			std::cout << calibration_document[i][j];
+			char string_character = calibration_document[i][j];
+
+			if (isdigit(calibration_document[i][j])) {
+
+				if (first_value == 0) {
+					first_value = string_character - '0';
+					std::cout << first_value;
+				}
+
+			}
 		}
 		std::cout << std::endl;
+		first_value = 0;
+		last_value = 0;
 	}
 
 	return 0;
