@@ -32,11 +32,15 @@ int main() {
 
 				if (first_value == 0) {
 					first_value = string_character - '0';
-					std::cout << first_value;
+				}
+				else { // Any other number which isn't the first value becomes the last KNOWN value
+					last_value = string_character - '0';
 				}
 
 			}
 		}
+		std::cout << "First value: " << first_value << "\n Last Value: " << last_value;
+
 		std::cout << std::endl;
 		first_value = 0;
 		last_value = 0;
